@@ -1,0 +1,49 @@
+#include <stdio.h> 
+
+// Define constantes para o tamanho da matriz
+#define LINHA 3
+#define COLUNA 3
+
+int main() {
+    // Declara uma matriz 3x3 de inteiros
+    int matriz[LINHA][COLUNA];
+
+    // Define o valor que será procurado na matriz
+    int target = 9;
+
+    // Variável que indica se o valor foi encontrado (0 = não, 1 = sim)
+    int found = 0;
+
+    // Variável usada para preencher a matriz com números em sequência
+    int soma = 1;
+
+    // Preenche a matriz com valores crescentes e imprime os valores
+    for (int i = 0; i < LINHA; i++) {            // Percorre as linhas
+        for (int j = 0; j < COLUNA; j++) {       // Percorre as colunas
+            matriz[i][j] = soma;                 // Atribui o valor atual de 'soma' à posição da matriz
+            soma++;                              // Incrementa o valor de 'soma'
+            printf("%d ", matriz[i][j]);         // Imprime o valor da posição atual
+        }
+        printf("\n");                            // Quebra de linha após cada linha da matriz
+    }
+
+    // Busca pelo valor definido como 'target' na matriz
+    for (int i = 0; i < LINHA; i++) {            // Percorre as linhas
+        for (int j = 0; j < COLUNA; j++) {       // Percorre as colunas
+            if (matriz[i][j] == target) {        // Se o valor na posição atual for igual ao alvo
+                printf("O valor %d foi encontrado no índice (%d, %d)\n", target, i, j);
+                found = 1;                       // Marca que encontrou
+                break;                           // Encerra o loop da coluna
+            }
+        }
+        if (found) break;                        // Se encontrou, encerra o loop da linha
+    }
+
+    // Se o valor não foi encontrado, exibe uma mensagem
+    if (!found) {
+        printf("Elemento %d não encontrado na matriz.\n", target);
+    }
+
+    return 0; // Encerra o programa
+}
+
